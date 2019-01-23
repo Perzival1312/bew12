@@ -37,9 +37,9 @@ app.use(methodOverride((req, res) => {
 }));
 
 
-const charities = require('./controllers/charities');
+const controller = require('./controllers/control');
 // Call in the ROUTES
-app.use(charities);
+app.use(controller);
 
 
 app.listen(port, () => {
