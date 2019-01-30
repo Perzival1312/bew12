@@ -1,0 +1,14 @@
+<div class="show-container">
+
+      <h1 class="show-title">{{posts.title}}</h1>
+
+      <p class="show-description">{{posts.body}}</p>
+
+
+    <!-- Show Comments -->
+    {{#each comments}}
+        <h1>hello world</h1>
+      {{> comment}}
+    {{/each}}
+    {{> comment-form}}
+</div>
