@@ -21,10 +21,9 @@ router.get('/pokemon/new', (req, res) => {
 });
 
 router.get('/pokemon/remove', (req, res) => {
-  world["trainer"]["pokemon"].remove("Bulbasaur")
-})
-
-
+  delete world.trainer.pokemon.Bulbasaur
+  res.send(world)
+});
 
 module.exports = router
 
