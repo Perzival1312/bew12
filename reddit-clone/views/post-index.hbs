@@ -1,0 +1,13 @@
+<main id="main" class="grid">
+    <div class="image">
+        <ul>
+            {{#each posts}}
+                <li>
+                  <a href="/post/{{this._id}}">
+                    <p>{{this.title}}</p>
+                  </a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</main>
