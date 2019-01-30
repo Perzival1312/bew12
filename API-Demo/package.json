@@ -1,5 +1,5 @@
 {
-  "name": "actual_contractor",
+  "name": "api-demo",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Perzival1312/actual-contractor.git"
+    "url": "git+https://github.com/Perzival1312/bew12.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Perzival1312/actual-contractor/issues"
+    "url": "https://github.com/Perzival1312/bew12/issues"
   },
-  "homepage": "https://github.com/Perzival1312/actual-contractor#readme",
+  "homepage": "https://github.com/Perzival1312/bew12#readme",
   "dependencies": {
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
