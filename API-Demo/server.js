@@ -9,7 +9,7 @@ const https = require('https');
 const http = require('http');
 
 // database connection goes here
-require('./database/mongooseConnection');
+// require('./database/mongooseConnection');
 
 
 // Template Engine //
@@ -37,9 +37,38 @@ app.use(methodOverride((req, res) => {
 }));
 
 
-const charities = require('./controllers/charities');
-// Call in the ROUTES
-app.use(charities);
+// const charities = require('./controllers/charities');
+// // Call in the ROUTES
+// app.use(charities);
+
+var world = {
+  "trainer" : {
+    "stats" : ["height", "age", "Name"],
+    "pokemon" : ["Charmander", "Arceus", "Pickachu"] 
+  }  
+}
+
+app.get('/', (req, res) => {
+  res.send(world)
+});
+
+app.put('/pokemon/new', (req, res) => {
+  world["trainer"]["pokemon"].push("Bulbasaur")
+  res.send("added bulbasaur")
+  res.redirect('/')
+});
+
+
+app.delete('/pokemon/remove', (req, res) => {
+  delete world.trainer.pokemon[0];
+  // world["trainer"]["pokemon"].remove(0)
+  res.redirect('/')
+});
+
+app.post('/pokemon/modify', (req, res) => {
+  world["trainer"]["pokemon"][0] = "Squirtle"
+  res.send(world)
+});
 
 
 app.listen(port, () => {

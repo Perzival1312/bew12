@@ -17,11 +17,18 @@ router.get('/', (req, res) => {
 
 router.get('/pokemon/new', (req, res) => {
   world["trainer"]["pokemon"].push("Bulbasaur")
-  res.send(world)
+  res.redirect('/')
 });
 
+
 router.get('/pokemon/remove', (req, res) => {
-  delete world.trainer.pokemon.Bulbasaur
+  delete world.trainer.pokemon[0];
+  // world["trainer"]["pokemon"].remove(0)
+  res.redirect('/')
+});
+
+router.get('/pokemon/modify', (req, res) => {
+  world["trainer"]["pokemon"][0] = "Squirtle"
   res.send(world)
 });
 
