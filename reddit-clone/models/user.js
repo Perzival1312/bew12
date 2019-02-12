@@ -3,20 +3,12 @@ const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  createdAt: { type: Date },
-  updatedAt: { type: Date },
-  password: { type: String, select: false },
-  username: { type: String, required: true }
+  createdAt:    { type: Date },
+  updatedAt:    { type: Date },
+  password:     { type: String, select: false },
+  username:     { type: String, required: true },
+  posts:        [{ type: Schema.Types.ObjectId, ref: "Post" }]
 });
-
-// userSchema.pre("save", function(next) {
-//   const now = new Date();
-//   this.updatedAt = now;
-//   if (!this.createdAt) {
-//     this.createdAt = now;
-//   }
-//   next();
-// });
 
 userSchema.pre("save", function(next) {
     // SET createdAt AND updatedAt

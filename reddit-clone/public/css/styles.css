@@ -3,6 +3,6 @@ body {
   color: rgb(0, 98, 255);
   overflow-x: hidden;
   margin: 10px;
-  font-family: 'VT323', monospace;
-  font-size: 40px;
+  /* font-family: 'VT323', monospace; */
+  /* font-size: 40px; */
 }
