@@ -8,19 +8,17 @@
         <a class="nav-link" href="/">Reddit <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-          <a href="/post/new" class="btn btn-primary navbar-btn">New Post</a>
-      </li>
+        {{#if currentUser}}
+            <a href="/post/new" class="btn btn-primary navbar-btn">New Post</a>
+        {{/if}}
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li>
-          <a href="/logout">Logout</a>
-      </li>
-      <li>
-          <a href="/login">Login</a>
-      </li>
-      <li>
-          <a href="/signup">Sign Up</a>
-      </li>
+        {{#if currentUser}}
+            <li><a href="/logout">Logout</a></li>
+        {{else}}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+        {{/if}}
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

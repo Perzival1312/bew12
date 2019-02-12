@@ -41,6 +41,21 @@ app.use(methodOverride((req, res) => {
   }
 }));
 
+app.use(cookieParser());
+
+var checkAuth = (req, res, next) => {
+  console.log("Checking authentication");
+  if (typeof req.cookies.nToken === "undefined" || req.cookies.nToken === null) {
+    req.user = null;
+  } else {
+    var token = req.cookies.nToken;
+    var decodedToken = jwt.decode(token, {complete: true}) || {};
+    req.user = decodedToken.payload;
+  }
+  next();
+};
+app.use(checkAuth);
+
 // Call in the ROUTES
 const postController = require('./controllers/posts');
 app.use(postController);
@@ -49,7 +64,7 @@ app.use(commentController);
 const authController = require('./controllers/auth');
 app.use(authController);
 
-app.use(cookieParser());
+
 
 app.listen(port, () => {
   console.log(`Port is listening on ${port}`)
