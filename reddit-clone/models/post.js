@@ -2,9 +2,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-  title: {type: String, required: true},
-  body:  {type: String, required: true}
+  createdAt:  { type: Date },
+  updatedAt:  { type: Date },
+  title:      { type: String, required: true },
+  url:        { type: String, required: true },
+  summary:    { type: String, required: true }
 })
-let post = mongoose.model('post', postSchema)
 
-module.exports = post;
+PostSchema.pre("save", function(next) {
+  // SET createdAt AND updatedAt
+  const now = new Date();
+  this.updatedAt = now;
+  if (!this.createdAt) {
+    this.createdAt = now;
+  }
+  next();
+});
+
+module.exports = mongoose.model("Post", PostSchema);
+
+// let post = mongoose.model('post', postSchema)
+// module.exports = post;

@@ -7,7 +7,7 @@ const Comment = require('../models/comment');
 // INDEX
 router.get('/', (req, res) => {
   Post.find({}).then((posts) => {
-    res.render('post-index', {posts});
+    res.render('index', {posts});
   }).catch((err) => res.send(err.message))
 });
 

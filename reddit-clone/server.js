@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const hbs = require('express-handlebars');
 const app = express();
 const port = process.env.PORT || 3000;
+const validator = require('express-validator')
 const https = require('https');
 const http = require('http');
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // BODY-PARSER
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
 // override with POST having ?_method=DELETE & ?_method=PUT
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(methodOverride('_method'));
