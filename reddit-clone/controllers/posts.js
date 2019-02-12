@@ -10,8 +10,6 @@ router.get('/', (req, res) => {
   var currentUser = req.user;
   Post.find().populate('author').then((posts) => {
     res.render('post-index', { posts, currentUser });
-  // Post.find({}).then((posts) => {
-  //   res.render('post-index', {posts, currentUser});
   }).catch((err) => res.send(err.message))
 });
 
@@ -41,7 +39,7 @@ router.post('/post/new', (req, res) => {
 
 router.get('/post/:id', (req, res) => {
   var currentUser = req.user;
-  Post.findById(req.params.id).populate({path:'comments', populate: {path: 'author'}}).populate('author').then((posts) => {
+  Post.findById(req.params.id).populate('comments').lean().then((posts) => {
     res.render('post-show', {posts, currentUser})
   }).catch((err) => res.send(err));
 });
@@ -49,9 +47,9 @@ router.get('/post/:id', (req, res) => {
 
 router.get("/n/:subreddit", (req, res) => {
   var currentUser = req.user;
-  Post.find({subreddit: req.params.subreddit}).populate('author').then((posts) => {
-      res.render("post-index", {posts, currentUser});
-    }).catch((err) => res.send(err));
+  Post.find({subreddit: req.params.subreddit}).lean().then((posts) => {
+    res.render("post-index", {posts, currentUser});
+  }).catch((err) => res.send(err));
 });
 
 module.exports = router

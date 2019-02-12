@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Populate = require("../utils/autopopulate");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
@@ -20,5 +21,7 @@ postSchema.pre("save", function(next) {
   }
   next();
 });
+postSchema.pre('findOne', Populate('author'))
+postSchema.pre('find', Populate('author'))
 
 module.exports = mongoose.model("Post", postSchema);
