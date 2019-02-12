@@ -7,7 +7,6 @@ const Comment = require('../models/comment');
 // INDEX
 router.get('/', (req, res) => {
   Post.find({}).then((posts) => {
-    // console.log(posts)
     res.render('post-index', {posts});
   }).catch((err) => res.send(err.message))
 });
@@ -23,11 +22,13 @@ router.post('/post/new', (req, res) => {
 });
 
 router.get('/post/:id', (req, res) => {
-  tempId = req.params.id
-  Post.findById(tempId).then((posts) => {
-    Comment.find({postId: tempId}).then((comments) => {
-      res.render('post-show', {posts : posts, comments : comments});
-    })
+  Post.findById(req.params.id).then((posts) => {
+    res.render('post-show', {posts})
+  // tempId = req.params.id
+  // Post.findById(tempId).then((posts) => {
+  //   Comment.find({postId: tempId}).then((comments) => {
+  //     res.render('post-show', {posts : posts, comments : comments});
+  //   })
   }).catch((err) => res.send(err.message));
 });
 
