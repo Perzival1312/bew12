@@ -9,7 +9,7 @@ const postSchema = new Schema({
   summary:    { type: String, required: true }
 })
 
-PostSchema.pre("save", function(next) {
+postSchema.pre("save", function(next) {
   // SET createdAt AND updatedAt
   const now = new Date();
   this.updatedAt = now;
@@ -19,7 +19,7 @@ PostSchema.pre("save", function(next) {
   next();
 });
 
-module.exports = mongoose.model("Post", PostSchema);
+// module.exports = mongoose.model("Post", postSchema);
 
-// let post = mongoose.model('post', postSchema)
-// module.exports = post;
+let post = mongoose.model('post', postSchema)
+module.exports = post;

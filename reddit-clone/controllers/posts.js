@@ -7,7 +7,8 @@ const Comment = require('../models/comment');
 // INDEX
 router.get('/', (req, res) => {
   Post.find({}).then((posts) => {
-    res.render('index', {posts});
+    // console.log(posts)
+    res.render('post-index', {posts});
   }).catch((err) => res.send(err.message))
 });
 
@@ -15,7 +16,7 @@ router.get('/post/new', (req, res) => {
   res.render('new-post')
 });
 
-router.post('/post', (req, res) => {
+router.post('/post/new', (req, res) => {
   Post.create(req.body).then(() => {
     res.redirect('/');
   }).catch((err) => res.send(err.message));
