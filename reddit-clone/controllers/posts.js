@@ -22,8 +22,9 @@ router.post('/post', (req, res) => {
 });
 
 router.get('/post/:id', (req, res) => {
-  Post.findById(req.params.id).then((posts) => {
-    Comment.find({postId: req.params.id}).then((comments) => {
+  tempId = req.params.id
+  Post.findById(tempId).then((posts) => {
+    Comment.find({postId: tempId}).then((comments) => {
       res.render('post-show', {posts : posts, comments : comments});
     })
   }).catch((err) => res.send(err.message));

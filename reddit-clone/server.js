@@ -38,14 +38,14 @@ app.use(methodOverride((req, res) => {
 
 
 const postController = require('./controllers/posts');
-const commentController = require('./controllers/comments')
+// const commentController = require('./controllers/comments')
 // Call in the ROUTES
 app.use(postController);
-app.use(commentController);
+// app.use(commentController);
 
 
 app.listen(port, () => {
   console.log(`Port is listening on ${port}`)
 });
 // for testing
-module.exports = { app };
+module.exports = {app};

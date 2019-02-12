@@ -2,5 +2,7 @@ body {
   background-color: black;
   color: #ccc;
   overflow-x: hidden;
-  /* font-family: 'Press Start 2P', cursive; */
+  margin: 10px;
+  font-family: 'VT323', monospace;
+  font-size: 40px;
 }
