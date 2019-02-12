@@ -41,9 +41,9 @@ router.post('/post/new', (req, res) => {
 
 router.get('/post/:id', (req, res) => {
   var currentUser = req.user;
-  Post.findById(req.params.id).populate('comments').populate('author').then((posts) => {
+  Post.findById(req.params.id).populate({path:'comments', populate: {path: 'author'}}).populate('author').then((posts) => {
     res.render('post-show', {posts, currentUser})
-  }).catch((err) => res.send(err.message));
+  }).catch((err) => res.send(err));
 });
 
 
