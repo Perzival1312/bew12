@@ -22,23 +22,19 @@ router.post('/post/new', (req, res) => {
 });
 
 router.get('/post/:id', (req, res) => {
-  Post.findById(req.params.id).then((posts) => {
+  Post.findById(req.params.id).populate('comments').then((posts) => {
     res.render('post-show', {posts})
-  // tempId = req.params.id
-  // Post.findById(tempId).then((posts) => {
-  //   Comment.find({postId: tempId}).then((comments) => {
-  //     res.render('post-show', {posts : posts, comments : comments});
-  //   })
   }).catch((err) => res.send(err.message));
 });
 
 
-router.get("/n/:subreddit", function(req, res) {
+router.get("/n/:subreddit", (req, res) => {
   Post.find({subreddit: req.params.subreddit}).then((posts) => {
       res.render("post-index", {posts});
-    }).catch((err) => {console.log(err);
-  });
+    }).catch((err) => res.send(err));
 });
+
+
 
 
 
