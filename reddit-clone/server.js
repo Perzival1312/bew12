@@ -8,10 +8,13 @@ const port = process.env.PORT || 3000;
 const validator = require('express-validator')
 const https = require('https');
 const http = require('http');
+var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 // database connection goes here
 require('./database/mongooseConnection');
 
+require('dotenv').config();
 
 // Template Engine //
 app.engine('hbs', hbs({
@@ -43,7 +46,10 @@ const postController = require('./controllers/posts');
 app.use(postController);
 const commentController = require('./controllers/comments');
 app.use(commentController);
+const authController = require('./controllers/auth');
+app.use(authController);
 
+app.use(cookieParser());
 
 app.listen(port, () => {
   console.log(`Port is listening on ${port}`)
