@@ -32,4 +32,14 @@ router.get('/post/:id', (req, res) => {
   }).catch((err) => res.send(err.message));
 });
 
+
+router.get("/n/:subreddit", function(req, res) {
+  Post.find({subreddit: req.params.subreddit}).then((posts) => {
+      res.render("post-index", {posts});
+    }).catch((err) => {console.log(err);
+  });
+});
+
+
+
 module.exports = router
