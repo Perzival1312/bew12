@@ -63,6 +63,8 @@ const commentController = require('./controllers/comments');
 app.use(commentController);
 const authController = require('./controllers/auth');
 app.use(authController);
+const replyController = require('./controllers/replies');
+app.use(replyController);
 
 
 

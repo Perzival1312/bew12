@@ -8,6 +8,8 @@ const commentSchema = new Schema({
   comments: [{type: Schema.Types.ObjectId, ref: "comment"}]
 });
 
+commentSchema.pre('findOne', Populate('comments'))
+commentSchema.pre('find', Populate('comments'))
 commentSchema.pre('findOne', Populate('author'))
 commentSchema.pre('find', Populate('author'))
 

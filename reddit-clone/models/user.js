@@ -7,7 +7,7 @@ const userSchema = new Schema({
   updatedAt:    { type: Date },
   password:     { type: String, select: false },
   username:     { type: String, required: true },
-  posts:        [{ type: Schema.Types.ObjectId, ref: "Post" }]
+  posts:        [{ type: Schema.Types.ObjectId, ref: "post" }]
 });
 
 userSchema.pre("save", function(next) {

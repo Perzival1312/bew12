@@ -6,8 +6,7 @@
   </div>
 </div>
 {{#each posts.comments}}
-  <p>{{this.content}}</p>
-  <p class="text-right">{{this.author.username}}</p>
+  {{> comment comments=this postId=../posts._id}}
 {{/each}}
 <form action="/post/{{posts._id}}/comments" method="post">
     <textarea class='form-control' name="content" placeholder="Comment"></textarea>
